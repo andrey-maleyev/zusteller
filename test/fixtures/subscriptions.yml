@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  is_active: false
+  is_monday: false
+  is_tuesday: false
+  is_wednesday: false
+  is_thursday: false
+  is_friday: false
+  is_saturday: false
+  order_index: 1
+  newspaper: one
+  customer: one
+
+two:
+  is_active: false
+  is_monday: false
+  is_tuesday: false
+  is_wednesday: false
+  is_thursday: false
+  is_friday: false
+  is_saturday: false
+  order_index: 1
+  newspaper: two
+  customer: two

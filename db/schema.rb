@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_25_223624) do
+ActiveRecord::Schema.define(version: 2020_05_25_231310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,5 +40,24 @@ ActiveRecord::Schema.define(version: 2020_05_25_223624) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.boolean "is_active"
+    t.boolean "is_monday"
+    t.boolean "is_tuesday"
+    t.boolean "is_wednesday"
+    t.boolean "is_thursday"
+    t.boolean "is_friday"
+    t.boolean "is_saturday"
+    t.integer "order_index"
+    t.bigint "newspaper_id"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_subscriptions_on_customer_id"
+    t.index ["newspaper_id"], name: "index_subscriptions_on_newspaper_id"
+  end
+
   add_foreign_key "customers", "districts"
+  add_foreign_key "subscriptions", "customers"
+  add_foreign_key "subscriptions", "newspapers"
 end
