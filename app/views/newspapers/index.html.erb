@@ -1,13 +1,13 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th>Bezirke</th>
+      <th>Zeitungen</th>
     </tr>
   </thead>
   <tbody>
-    <% @districts.each do |district| %>
+    <% @newspapers.each do |newspaper| %>
       <tr>
-        <td><%= district.name %></td>
+        <td><%= newspaper.name %></td>
       </tr>
     <% end %>
   </tbody>
