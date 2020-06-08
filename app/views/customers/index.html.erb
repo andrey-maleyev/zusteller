@@ -1,0 +1,19 @@
+<strong><p class="text-dark">Bezirke <%= @district.name %></p></strong>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th>Adresse</th>
+      <th>Zust.Bes.</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.address %></td>
+        <td><%= customer.delivery_note %></td>
+        <td><%= customer.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
