@@ -1,30 +1,32 @@
-<strong><p class="text-dark">Bezirke <%= @district.name %></p></strong>
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th>№</th>
-      <th>Adresse</th>
-      <th>Zust.Bes.</th>
-      <th>Name</th>
-      <th>PVA</th>
-      <th colspan="6">Tage</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @subscriptions.each do |subscription| %>
+<div class="main">
+  <h3><p class="text-dark">Bezirke <%= @district.name %></p></h3>
+  <table class="table">
+    <thead class="thead-light">
       <tr>
-        <td><%= subscription.order_index %></td>
-        <td><%= subscription.customer.address %></td>
-        <td><%= subscription.customer.delivery_note %></td>
-        <td><%= subscription.customer.name %></td>
-        <td><%= subscription.newspaper.name %></td>
-        <td class="day <%= "day-true" if subscription.is_monday %>">MO</td>
-        <td class="day <%= "day-true" if subscription.is_tuesday %>">DI</td>
-        <td class="day <%= "day-true" if subscription.is_wednesday %>">MI</td>
-        <td class="day <%= "day-true" if subscription.is_thursday %>">DO</td>
-        <td class="day <%= "day-true" if subscription.is_friday %>">FR</td>
-        <td class="day <%= "day-true" if subscription.is_saturday %>">SA</td>
+        <th>№</th>
+        <th>Adresse</th>
+        <th>Zust.Bes.</th>
+        <th>Name</th>
+        <th>PVA</th>
+        <th colspan="6">Tage</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @subscriptions.each do |subscription| %>
+        <tr>
+          <td><%= subscription.order_index %></td>
+          <td><%= subscription.customer.address %></td>
+          <td><%= subscription.customer.delivery_note %></td>
+          <td><%= subscription.customer.name %></td>
+          <td><%= subscription.newspaper.name %></td>
+          <td class="day <%= "day-true" if subscription.is_monday %>">MO</td>
+          <td class="day <%= "day-true" if subscription.is_tuesday %>">DI</td>
+          <td class="day <%= "day-true" if subscription.is_wednesday %>">MI</td>
+          <td class="day <%= "day-true" if subscription.is_thursday %>">DO</td>
+          <td class="day <%= "day-true" if subscription.is_friday %>">FR</td>
+          <td class="day <%= "day-true" if subscription.is_saturday %>">SA</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
