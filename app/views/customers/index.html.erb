@@ -1,19 +1,24 @@
-<strong><p class="text-dark">Bezirke <%= @district.name %></p></strong>
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th>Adresse</th>
-      <th>Zust.Bes.</th>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @customers.each do |customer| %>
+<div class="main">
+  <h3><p class="text-dark">Bezirke <%= @district.name %></p></h3>
+
+  <p><%= link_to 'Add a new customer', new_district_customer_path, class: "btn btn-outline-secondary" %></p>
+
+  <table class="table">
+    <thead class="thead-light">
       <tr>
-        <td><%= customer.address %></td>
-        <td><%= customer.delivery_note %></td>
-        <td><%= customer.name %></td>
+        <th>Adresse</th>
+        <th>Zust.Bes.</th>
+        <th>Name</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.address %></td>
+          <td><%= customer.delivery_note %></td>
+          <td><%= customer.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
