@@ -12,6 +12,7 @@
         <th>Name</th>
         <th>PVA</th>
         <th colspan="6">Tage</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -28,6 +29,11 @@
           <td class="day <%= "day-true" if subscription.is_thursday %>">DO</td>
           <td class="day <%= "day-true" if subscription.is_friday %>">FR</td>
           <td class="day <%= "day-true" if subscription.is_saturday %>">SA</td>
+          <td>
+            <%= link_to subscription_path(subscription), method: :delete, data: { confirm: "Dieses Abonnement löschen?" } do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
