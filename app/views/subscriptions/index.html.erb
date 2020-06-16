@@ -1,5 +1,8 @@
 <div class="main">
   <h3><p class="text-dark">Bezirke <%= @district.name %></p></h3>
+
+  <p><%= link_to 'Neues Abonnement erstellen', new_district_subscription_path, class: "btn btn-outline-secondary" %></p>
+
   <table class="table">
     <thead class="thead-light">
       <tr>
