@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :new, :create]
   end
   resources :newspapers, only: [:index]
+  post 'subscriptions/:id', to: 'subscriptions#change_status'
 
   root to: 'districts#index'
 end

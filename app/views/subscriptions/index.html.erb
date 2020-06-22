@@ -13,25 +13,36 @@
         <th>PVA</th>
         <th colspan="6">Tage</th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <% @subscriptions.each do |subscription| %>
+        <% subscription.is_active ? status = "enabled" : status = "disabled" %>
         <tr>
           <td><%= subscription.order_index %></td>
-          <td><%= subscription.customer.address %></td>
-          <td><%= subscription.customer.delivery_note %></td>
-          <td><%= subscription.customer.name %></td>
-          <td><%= subscription.newspaper.name %></td>
-          <td class="day <%= "day-true" if subscription.is_monday %>">MO</td>
-          <td class="day <%= "day-true" if subscription.is_tuesday %>">DI</td>
-          <td class="day <%= "day-true" if subscription.is_wednesday %>">MI</td>
-          <td class="day <%= "day-true" if subscription.is_thursday %>">DO</td>
-          <td class="day <%= "day-true" if subscription.is_friday %>">FR</td>
-          <td class="day <%= "day-true" if subscription.is_saturday %>">SA</td>
+          <td class="<%= status %>"><%= subscription.customer.address %></td>
+          <td class="<%= status %>"><%= subscription.customer.delivery_note %></td>
+          <td class="<%= status %>"><%= subscription.customer.name %></td>
+          <td class="<%= status %>"><%= subscription.newspaper.name %></td>
+          <td class="day <%= "day-true" if subscription.is_monday %> <%= status %>">MO</td>
+          <td class="day <%= "day-true" if subscription.is_tuesday %> <%= status %>">DI</td>
+          <td class="day <%= "day-true" if subscription.is_wednesday %> <%= status %>">MI</td>
+          <td class="day <%= "day-true" if subscription.is_thursday %> <%= status %>">DO</td>
+          <td class="day <%= "day-true" if subscription.is_friday %> <%= status %>">FR</td>
+          <td class="day <%= "day-true" if subscription.is_saturday %> <%= status %>">SA</td>
           <td>
             <%= link_to subscription_path(subscription), method: :delete, data: { confirm: "Dieses Abonnement löschen?" } do %>
               <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to subscription_path(subscription), method: :change_status do %>
+              <% if subscription.is_active %>
+                <i class="fas fa-toggle-on"></i>
+              <% else %>
+                <i class="fas fa-toggle-off"></i>
+              <% end %>
             <% end %>
           </td>
         </tr>
