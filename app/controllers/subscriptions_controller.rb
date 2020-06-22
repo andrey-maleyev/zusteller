@@ -1,9 +1,9 @@
 class SubscriptionsController < ApplicationController
   before_action :set_district, only: [:index, :new]
-  before_action :set_subscription, only: [:destroy]
+  before_action :set_subscription, only: [:destroy, :change_status]
 
   def index
-    @subscriptions = Subscription.where(customer_id: Customer.where(district_id: @district))
+    @subscriptions = Subscription.where(customer_id: Customer.where(district_id: @district)).order(:order_index)
   end
 
   def new
@@ -14,12 +14,19 @@ class SubscriptionsController < ApplicationController
 
   def create
     @subscription = Subscription.new(subscription_params)
+    @subscription.is_active = true
     @subscription.save
     redirect_to district_subscriptions_path
   end
 
   def destroy
     @subscription.destroy
+    redirect_to district_subscriptions_path(@subscription.customer.district)
+  end
+
+  def change_status
+    @subscription.is_active == true ? @subscription.is_active = false : @subscription.is_active = true
+    @subscription.save
     redirect_to district_subscriptions_path(@subscription.customer.district)
   end
   
