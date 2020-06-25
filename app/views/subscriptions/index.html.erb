@@ -14,13 +14,15 @@
         <th colspan="6">Tage</th>
         <th></th>
         <th></th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <% @subscriptions.each do |subscription| %>
         <% subscription.is_active ? status = "enabled" : status = "disabled" %>
         <tr>
-          <td><%= subscription.order_index %></td>
+          <td class="<%= status %>"><%= subscription.order_index/2 %></td>
           <td class="<%= status %>"><%= subscription.customer.address %></td>
           <td class="<%= status %>"><%= subscription.customer.delivery_note %></td>
           <td class="<%= status %>"><%= subscription.customer.name %></td>
@@ -37,12 +39,22 @@
             <% end %>
           </td>
           <td>
-            <%= link_to subscription_path(subscription), method: :change_status do %>
+            <%= link_to change_status_subscription_path(subscription), method: :change_status do %>
               <% if subscription.is_active %>
                 <i class="fas fa-toggle-on"></i>
               <% else %>
                 <i class="fas fa-toggle-off"></i>
               <% end %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to order_up_subscription_path(subscription), method: :order_up do %>
+              <i class="fas fa-arrow-up"></i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to order_down_subscription_path(subscription), method: :order_down do %>
+              <i class="fas fa-arrow-down"></i>
             <% end %>
           </td>
         </tr>
