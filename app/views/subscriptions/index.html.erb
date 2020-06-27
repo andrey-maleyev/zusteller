@@ -11,7 +11,7 @@
         <th>Zust.Bes.</th>
         <th>Name</th>
         <th>PVA</th>
-        <th colspan="6">Tage</th>
+        <th>Tage</th>
         <th></th>
         <th></th>
         <th></th>
@@ -21,18 +21,27 @@
     <tbody>
       <% @subscriptions.each do |subscription| %>
         <% subscription.is_active ? status = "enabled" : status = "disabled" %>
+
+        <% subscription.is_monday ? days_array = ["MO"] : days_array = [] %>
+        <% days_array << "DI" if subscription.is_tuesday %>
+        <% days_array << "MI" if subscription.is_wednesday %>
+        <% days_array << "DO" if subscription.is_thursday %>
+        <% days_array << "FR" if subscription.is_friday %>
+        <% days_array << "SA" if subscription.is_saturday %>
+        <% days_print = days_array.join(', ') %>
+        <% days_style = "donnerstag" if days_print == "DO" %>
+        <% days_style = "wochenende" if days_print == "FR" || days_print == "SA" || days_print == "FR, SA" %>
+        <% days_print = "FR-SA" if days_print == "FR, SA" %>
+        <% days_print = "MO-FR" if days_print == "MO, DI, MI, DO, FR" %>
+        <% days_print = "Täglich" if days_array.length == 6 %>
+
         <tr>
           <td class="<%= status %>"><%= subscription.order_index/2 %></td>
           <td class="<%= status %>"><%= subscription.customer.address %></td>
           <td class="<%= status %>"><%= subscription.customer.delivery_note %></td>
           <td class="<%= status %>"><%= subscription.customer.name %></td>
           <td class="<%= status %>"><%= subscription.newspaper.name %></td>
-          <td class="day <%= "day-true" if subscription.is_monday %> <%= status %>">MO</td>
-          <td class="day <%= "day-true" if subscription.is_tuesday %> <%= status %>">DI</td>
-          <td class="day <%= "day-true" if subscription.is_wednesday %> <%= status %>">MI</td>
-          <td class="day <%= "day-true" if subscription.is_thursday %> <%= status %>">DO</td>
-          <td class="day <%= "day-true" if subscription.is_friday %> <%= status %>">FR</td>
-          <td class="day <%= "day-true" if subscription.is_saturday %> <%= status %>">SA</td>
+          <td class="<%= status %> <%= days_style %>"><%= days_print %></td>
           <td>
             <%= link_to subscription_path(subscription), method: :delete, data: { confirm: "Dieses Abonnement löschen?" } do %>
               <i class="fas fa-trash-alt"></i>
