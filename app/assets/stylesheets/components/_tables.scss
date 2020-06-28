@@ -7,9 +7,21 @@
 }
 
 .disabled {
-  color: rgb(200, 200, 200);
+  color: rgb(220, 220, 220);
 }
 
 .enabled {
   color: black;
+}
+
+.h-align {
+  text-align: center;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a {
+  color: gray;
 }

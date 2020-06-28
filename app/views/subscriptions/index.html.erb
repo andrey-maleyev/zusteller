@@ -8,12 +8,9 @@
       <tr>
         <th>№</th>
         <th>Adresse</th>
-        <th>Zust.Bes.</th>
         <th>Name</th>
         <th>PVA</th>
-        <th>Tage</th>
-        <th></th>
-        <th></th>
+        <th class="h-align">Tage</th>
         <th></th>
         <th></th>
       </tr>
@@ -37,17 +34,20 @@
 
         <tr>
           <td class="<%= status %>"><%= subscription.order_index/2 %></td>
-          <td class="<%= status %>"><%= subscription.customer.address %></td>
-          <td class="<%= status %>"><%= subscription.customer.delivery_note %></td>
+          <td class="<%= status %>"><%= subscription.customer.address %><br><%= subscription.customer.delivery_note %></td>
           <td class="<%= status %>"><%= subscription.customer.name %></td>
           <td class="<%= status %>"><%= subscription.newspaper.name %></td>
-          <td class="<%= status %> <%= days_style %>"><%= days_print %></td>
-          <td>
-            <%= link_to subscription_path(subscription), method: :delete, data: { confirm: "Dieses Abonnement löschen?" } do %>
-              <i class="fas fa-trash-alt"></i>
+          <td class="<%= status %> <%= days_style %> h-align"><%= days_print %></td>
+          <td class="h-align">
+            <%= link_to order_up_subscription_path(subscription), method: :post do %>
+              <i class="fas fa-arrow-up"></i>
+            <% end %>
+            <br>
+            <%= link_to order_down_subscription_path(subscription), method: :post do %>
+              <i class="fas fa-arrow-down"></i>
             <% end %>
           </td>
-          <td>
+          <td class="h-align">
             <%= link_to change_status_subscription_path(subscription), method: :post do %>
               <% if subscription.is_active %>
                 <i class="fas fa-toggle-on"></i>
@@ -55,15 +55,9 @@
                 <i class="fas fa-toggle-off"></i>
               <% end %>
             <% end %>
-          </td>
-          <td>
-            <%= link_to order_up_subscription_path(subscription), method: :post do %>
-              <i class="fas fa-arrow-up"></i>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to order_down_subscription_path(subscription), method: :post do %>
-              <i class="fas fa-arrow-down"></i>
+            &nbsp;
+            <%= link_to subscription_path(subscription), method: :delete, data: { confirm: "Dieses Abonnement löschen?" } do %>
+              <i class="fas fa-trash-alt"></i>
             <% end %>
           </td>
         </tr>
