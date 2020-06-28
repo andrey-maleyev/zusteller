@@ -6,12 +6,12 @@
   <table class="table">
     <thead class="thead-light">
       <tr>
+        <th></th>
         <th>№</th>
         <th>Adresse</th>
         <th>Name</th>
         <th>PVA</th>
-        <th class="h-align">Tage</th>
-        <th></th>
+        <th class="text-center">Tage</th>
         <th></th>
       </tr>
     </thead>
@@ -32,13 +32,8 @@
         <% days_print = "MO-FR" if days_print == "MO, DI, MI, DO, FR" %>
         <% days_print = "Täglich" if days_array.length == 6 %>
 
-        <tr>
-          <td class="<%= status %>"><%= subscription.order_index/2 %></td>
-          <td class="<%= status %>"><%= subscription.customer.address %><br><%= subscription.customer.delivery_note %></td>
-          <td class="<%= status %>"><%= subscription.customer.name %></td>
-          <td class="<%= status %>"><%= subscription.newspaper.name %></td>
-          <td class="<%= status %> <%= days_style %> h-align"><%= days_print %></td>
-          <td class="h-align">
+        <tr class="align-middle">
+          <td class="text-center align-middle">
             <%= link_to order_up_subscription_path(subscription), method: :post do %>
               <i class="fas fa-arrow-up"></i>
             <% end %>
@@ -47,7 +42,12 @@
               <i class="fas fa-arrow-down"></i>
             <% end %>
           </td>
-          <td class="h-align">
+          <td class="<%= status %> align-middle"><%= subscription.order_index/2 %></td>
+          <td class="<%= status %> align-middle"><%= subscription.customer.address %><br><%= subscription.customer.delivery_note %></td>
+          <td class="<%= status %> align-middle"><%= subscription.customer.name %></td>
+          <td class="<%= status %> align-middle"><%= subscription.newspaper.name %></td>
+          <td class="<%= status %> <%= days_style %> text-center align-middle"><%= days_print %></td>
+          <td class="text-center align-middle">
             <%= link_to change_status_subscription_path(subscription), method: :post do %>
               <% if subscription.is_active %>
                 <i class="fas fa-toggle-on"></i>
