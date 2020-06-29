@@ -20,11 +20,11 @@
     <thead class="thead-light">
       <tr>
         <th></th>
-        <th>№</th>
-        <th>Adresse</th>
-        <th>Name</th>
-        <th>PVA</th>
-        <th class="text-center">Tage</th>
+        <th class="align-middle">№</th>
+        <th class="align-middle">Adresse</th>
+        <th class="align-middle">Name</th>
+        <th class="align-middle text-center">Menge</th>
+        <th class="text-center">Zeitung<br>Tage</th>
         <th></th>
       </tr>
     </thead>
@@ -39,11 +39,11 @@
         <% days_array << "FR" if subscription.is_friday %>
         <% days_array << "SA" if subscription.is_saturday %>
         <% days_print = days_array.join(', ') %>
-        <% days_style = "donnerstag" if days_print == "DO" %>
-        <% days_style = "wochenende" if days_print == "FR" || days_print == "SA" || days_print == "FR, SA" %>
+        <% days_bg_color = "donnerstag" if days_print == "DO" %>
+        <% days_bg_color = "wochenende" if days_print == "FR" || days_print == "SA" || days_print == "FR, SA" %>
         <% days_print = "FR-SA" if days_print == "FR, SA" %>
         <% days_print = "MO-FR" if days_print == "MO, DI, MI, DO, FR" %>
-        <% days_print = "Täglich" if days_array.length == 6 %>
+        <% days_print = "" if days_array.length == 6 %>
 
         <tr class="align-middle">
           <td class="text-center align-middle">
@@ -55,11 +55,20 @@
               <i class="fas fa-arrow-down"></i>
             <% end %>
           </td>
+
           <td class="<%= status %> align-middle"><%= subscription.order_index/2 %></td>
+
           <td class="<%= status %> align-middle"><%= subscription.customer.address %><br><%= subscription.customer.delivery_note %></td>
+          
           <td class="<%= status %> align-middle"><%= subscription.customer.name %></td>
-          <td class="<%= status %> align-middle"><%= subscription.newspaper.name %></td>
-          <td class="<%= status %> <%= days_style %> text-center align-middle"><%= days_print %></td>
+
+          <td class="<%= status %> align-middle text-center"><%= subscription.quantity %></td>
+          
+          <td class="<%= status %> align-middle text-center">
+            <div><%= subscription.newspaper.name %></div>
+            <div class="days <%= days_bg_color %>"><%= days_print %></div>
+          </td>
+          
           <td class="text-center align-middle">
             <%= link_to change_status_subscription_path(subscription), method: :post do %>
               <% if subscription.is_active %>
