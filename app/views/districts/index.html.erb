@@ -1,14 +1,37 @@
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th>Bezirke</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @districts.each do |district| %>
+<div class="div-center">
+  <ul class="nav nav-tabs justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" href="/districts">Bezirke</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/newspapers">Zeitungen</a>
+    </li>
+  </ul>
+  <br>
+  <table class="table">
+    <thead class="thead-light">
       <tr>
-        <td><%= district.name %></td>
+        <th>Bezirk ID</th>
+        <th class="text-center">Abonnements</th>
+        <th class="text-center">Kunden</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @districts.each do |district| %>
+        <tr>
+          <td><%= district.name %></td>
+          <td class="text-center">
+            <%= link_to "/districts/#{district.id}/subscriptions", method: :get do %>
+              <i class="fas fa-newspaper"></i>
+            <% end %>
+          </td>
+          <td class="text-center">
+            <%= link_to "/districts/#{district.id}/customers", method: :get do %>
+              <i class="fas fa-users"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
