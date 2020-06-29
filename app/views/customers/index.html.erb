@@ -11,7 +11,7 @@
 
   <table>
     <tr>
-      <td><h4><p class="text-dark">Bezirke <%= @district.name %></p></h4></td>
+      <td><h4><p class="text-dark">Kunden des Bezirkes <%= @district.name %></p></h4></td>
       <td class="button_new"><p><%= link_to 'Neuen Kunden erstellen', new_district_customer_path, class: "btn btn-outline-secondary" %></p></td>
     </tr>
   </table>
@@ -19,14 +19,18 @@
   <table class="table">
     <thead class="thead-light">
       <tr>
+        <th class="text-center">№</th>
         <th>Adresse</th>
         <th>Zust.Bes.</th>
         <th>Name</th>
       </tr>
     </thead>
     <tbody>
+      <% i = 0 %>
       <% @customers.each do |customer| %>
+        <% i += 1 %>
         <tr>
+          <td class="text-center"><%= i %></td>
           <td><%= customer.address %></td>
           <td><%= customer.delivery_note %></td>
           <td><%= customer.name %></td>
