@@ -1,7 +1,20 @@
 <div class="main">
-  <h3><p class="text-dark">Bezirke <%= @district.name %></p></h3>
-
-  <p><%= link_to 'Neues Abonnement erstellen', new_district_subscription_path, class: "btn btn-outline-secondary" %></p>
+  <ul class="nav nav-tabs justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link" href="/districts">Bezirke</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/newspapers">Zeitungen</a>
+    </li>
+  </ul>
+  <br>
+  
+  <table>
+    <tr>
+      <td><h4><p class="text-dark">Bezirke <%= @district.name %></p></h4></td>
+      <td class="button_new"><p><%= link_to 'Neues Abonnement erstellen', new_district_subscription_path, class: "btn btn-outline-secondary" %></p></td>
+    </tr>
+  </table>
 
   <table class="table">
     <thead class="thead-light">
@@ -55,7 +68,7 @@
                 <i class="fas fa-toggle-off"></i>
               <% end %>
             <% end %>
-            &nbsp;
+            &nbsp;&nbsp;
             <%= link_to subscription_path(subscription), method: :delete, data: { confirm: "Dieses Abonnement löschen?" } do %>
               <i class="fas fa-trash-alt"></i>
             <% end %>

@@ -1,9 +1,16 @@
 <div class="div-center">
-  <h3>Neuen Kunden erstellen</h3>
-
+  <ul class="nav nav-tabs justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link" href="/districts">Bezirke</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/newspapers">Zeitungen</a>
+    </li>
+  </ul>
+  <br>
+  <h4>Neuen Kunden erstellen</h4>
+  <br>
   <%= render 'form', customer: @customer %>
-
-  <br><br>
-
+  <br>
   <%= link_to 'Zurück', district_customers_path, class: "btn btn-outline-secondary" %>
 </div>

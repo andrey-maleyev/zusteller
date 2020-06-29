@@ -1,9 +1,18 @@
 <div class="div-center">
-  <h3>Neues Abonnement erstellen</h3>
+  <ul class="nav nav-tabs justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link" href="/districts">Bezirke</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/newspapers">Zeitungen</a>
+    </li>
+  </ul>
+  <br>
+  <h4>Neues Abonnement erstellen</h4>
 
   <%= render 'form', subscription: @subscription %>
 
-  <br><br>
+  <br>
 
   <%= link_to 'Zurück', district_subscriptions_path, class: "btn btn-outline-secondary" %>
 </div>

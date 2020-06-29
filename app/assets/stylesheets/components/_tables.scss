@@ -6,6 +6,10 @@
   background-color: rgb(250, 250, 153);
 }
 
+.button_new {
+  padding: 25px;
+}
+
 .disabled {
   color: rgb(220, 220, 220);
 }
@@ -16,9 +20,9 @@
 
 a:hover {
   text-decoration: none;
-  color: darkgray;
+  color: rgb(50, 50, 50);
 }
 
 a {
-  color: lightgray;
+  color: gray;
 }
