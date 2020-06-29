@@ -19,6 +19,10 @@
 	  <%= form.association :newspaper, as: :radio_buttons, label_method: :full_name, label: "Zeitung:" %>
 	</div>
 
+  <div class="field">
+    <%= form.input :quantity, label: "Menge:" %>
+  </div>
+
   <div class="row">
     <div class="col">
       <%= form.input :is_monday, as: :boolean, label: "MO" %>

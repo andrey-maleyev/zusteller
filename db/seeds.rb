@@ -40,14 +40,14 @@ Newspaper.create([
 
 puts 'Creating subscriptions...'
 Subscription.create([
-  {is_active: true, is_monday: true, is_tuesday: true, is_wednesday: true, is_thursday: true, is_friday: true, is_saturday: true, order_index: 1, newspaper_id: Newspaper.first.id, customer_id: Customer.first.id},
-  {is_active: true, is_monday: false, is_tuesday: false, is_wednesday: false, is_thursday: true, is_friday: false, is_saturday: false, order_index: 2, newspaper_id: Newspaper.last.id, customer_id: Customer.first.id},
-  {is_active: true, is_monday: true, is_tuesday: true, is_wednesday: true, is_thursday: true, is_friday: true, is_saturday: true, order_index: 3, newspaper_id: Newspaper.second.id, customer_id: Customer.second.id},
-  {is_active: true, is_monday: true, is_tuesday: true, is_wednesday: true, is_thursday: true, is_friday: true, is_saturday: true, order_index: 4, newspaper_id: Newspaper.third.id, customer_id: Customer.third.id},
-  {is_active: true, is_monday: false, is_tuesday: false, is_wednesday: false, is_thursday: false, is_friday: true, is_saturday: true, order_index: 5, newspaper_id: Newspaper.fourth.id, customer_id: Customer.fourth.id},
-  {is_active: true, is_monday: true, is_tuesday: true, is_wednesday: true, is_thursday: true, is_friday: true, is_saturday: true, order_index: 6, newspaper_id: Newspaper.fifth.id, customer_id: Customer.fifth.id},
-  {is_active: true, is_monday: false, is_tuesday: false, is_wednesday: false, is_thursday: false, is_friday: true, is_saturday: true, order_index: 7, newspaper_id: Newspaper.first.id, customer_id: Customer.last.id},
-  {is_active: false, is_monday: true, is_tuesday: true, is_wednesday: true, is_thursday: true, is_friday: true, is_saturday: true, order_index: 8, newspaper_id: Newspaper.second.id, customer_id: Customer.last.id}
+  {is_active: true, is_monday: true, is_tuesday: true, is_wednesday: true, is_thursday: true, is_friday: true, is_saturday: true, order_index: 1, newspaper_id: Newspaper.first.id, quantity: 1, customer_id: Customer.first.id},
+  {is_active: true, is_monday: false, is_tuesday: false, is_wednesday: false, is_thursday: true, is_friday: false, is_saturday: false, order_index: 2, newspaper_id: Newspaper.last.id, quantity: 1, customer_id: Customer.first.id},
+  {is_active: true, is_monday: true, is_tuesday: true, is_wednesday: true, is_thursday: true, is_friday: true, is_saturday: true, order_index: 3, newspaper_id: Newspaper.second.id, quantity: 1, customer_id: Customer.second.id},
+  {is_active: true, is_monday: true, is_tuesday: true, is_wednesday: true, is_thursday: true, is_friday: true, is_saturday: true, order_index: 4, newspaper_id: Newspaper.third.id, quantity: 1, customer_id: Customer.third.id},
+  {is_active: true, is_monday: false, is_tuesday: false, is_wednesday: false, is_thursday: false, is_friday: true, is_saturday: true, order_index: 5, newspaper_id: Newspaper.fourth.id, quantity: 1, customer_id: Customer.fourth.id},
+  {is_active: true, is_monday: true, is_tuesday: true, is_wednesday: true, is_thursday: true, is_friday: true, is_saturday: true, order_index: 6, newspaper_id: Newspaper.fifth.id, quantity: 1, customer_id: Customer.fifth.id},
+  {is_active: true, is_monday: false, is_tuesday: false, is_wednesday: false, is_thursday: false, is_friday: true, is_saturday: true, order_index: 7, newspaper_id: Newspaper.first.id, quantity: 1, customer_id: Customer.last.id},
+  {is_active: false, is_monday: true, is_tuesday: true, is_wednesday: true, is_thursday: true, is_friday: true, is_saturday: true, order_index: 8, newspaper_id: Newspaper.second.id, quantity: 1, customer_id: Customer.last.id}
 ])
 
 puts 'Finished!'

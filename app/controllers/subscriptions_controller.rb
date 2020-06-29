@@ -77,7 +77,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscription_params
-    params.require(:subscription).permit(:customer_id, :newspaper_id, :is_monday,
+    params.require(:subscription).permit(:customer_id, :newspaper_id, :quantity, :is_monday,
       :is_tuesday, :is_wednesday, :is_thursday, :is_friday, :is_saturday)
   end
 end
